@@ -24,7 +24,8 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
 // a post by it's id
 // select * from posts where id = :id
-    getById(req.params.id)
+    db.select("*")
+    .from("accounts").where({id: req.params.id})
     .then(account => {
     res.status(200).json(account);
     })
